@@ -1,0 +1,42 @@
+<div class="dashboard">
+    <h2>Dashboard</h2>
+    <div class="summary">
+        <div class="card">
+            <h3>Total Income</h3>
+            <p>{{ totalIncome | currency:'INR' }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Expenses</h3>
+            <p>{{ totalExpenses | currency:'INR' }}</p>
+        </div>
+        <div class="card">
+            <h3>Balance</h3>
+            <p>{{ balance | currency:'INR' }}</p>
+        </div>
+    </div>
+    <div class="quick-links">
+        <button [routerLink]="['/add-transaction']">Add Transaction</button>
+        <button [routerLink]="['/analytics']">Analytics</button>
+    </div>
+    <div class="recent-transactions">
+        <h3>Recent Transactions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of recentTransactions">
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.description }}</td>
+                    <td>{{ transaction.amount | currency:'INR' }}</td>
+                    <td>{{ transaction.category }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

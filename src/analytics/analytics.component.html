@@ -1,0 +1,45 @@
+<div class="analytics">
+    <h2>Analytics</h2>
+
+    <div class="summary">
+        <div class="card">
+            <h3>Total Income</h3>
+            <p>{{ totalIncome | currency:'INR' }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Expenses</h3>
+            <p>{{ totalExpenses | currency:'INR' }}</p>
+        </div>
+        <div class="card">
+            <h3>Balance</h3>
+            <p>{{ balance | currency:'INR' }}</p>
+        </div>
+    </div>
+
+    <div>
+        <h3>AI-Driven Prediction</h3>
+        <p *ngIf="futurePrediction">
+            Predicted Expense for Next Month: {{ futurePrediction | currency }}
+        </p>
+        <h6 *ngIf="futurePrediction" class="text-danger">The actual cost may differ</h6>
+    </div>
+
+    <div class="charts">
+        <h3>Income vs Expenses</h3>
+        <canvas id="incomeExpenseChart"></canvas>
+    </div>
+
+    <div class="breakdown">
+        <h3>Transaction Breakdown</h3>
+        <ul>
+            <li *ngFor="let category of transactionCategories">
+                {{ category.name }}: {{ category.total | currency:'INR' }}
+            </li>
+        </ul>
+    </div>
+
+    <div class="trends">
+        <h3>Monthly Trends</h3>
+        <canvas id="monthlyTrendsChart"></canvas>
+    </div>
+</div>

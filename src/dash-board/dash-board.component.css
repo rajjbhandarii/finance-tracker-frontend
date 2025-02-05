@@ -1,0 +1,64 @@
+.dashboard {
+  padding: 20px;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 30%;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.quick-links {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.quick-links button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.quick-links button:hover {
+  background-color: #0056b3;
+}
+
+.recent-transactions table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recent-transactions th,
+.recent-transactions td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.recent-transactions th {
+  background-color: #f8f9fa;
+}
+
+.recent-transactions tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}

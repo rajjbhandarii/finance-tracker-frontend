@@ -1,0 +1,38 @@
+.transaction-form {
+  margin: 20px;
+}
+
+.transaction-form h2 {
+  text-align: center;
+}
+
+.transaction-form .form-group {
+  margin-bottom: 15px;
+}
+
+.transaction-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.transaction-form input,
+.transaction-form select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.transaction-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.4rem;
+}
+
+.transaction-form button:hover {
+  background-color: #0056b3;
+}

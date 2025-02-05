@@ -1,0 +1,64 @@
+.analytics {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.analytics h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.analytics .summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.analytics .card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 30%;
+  text-align: center;
+}
+
+.analytics .card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.analytics .card p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.analytics .charts,
+.analytics .breakdown,
+.analytics .trends {
+  margin-top: 30px;
+}
+
+.analytics canvas {
+  max-width: 100%;
+  margin: 0 auto;
+  max-height: 400px;
+  display: block;
+}
+
+.analytics ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.analytics li {
+  padding: 5px 0;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.charts,
+.trends {
+  text-align: center;
+}

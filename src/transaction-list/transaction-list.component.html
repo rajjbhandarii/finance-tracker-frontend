@@ -1,0 +1,32 @@
+<div class="transaction-list">
+    <h2>Transaction List</h2>
+    @if(isloading==true){
+    <div class="alert alert-info" role="alert">
+        Transactions loading... (May take upto 10 second)
+    </div>
+    }
+    <table>
+        <thead>
+            <tr>
+                <th>Date & Time</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of data">
+                <td>{{ transaction.date | date:'dd-MM-yyyy || hh:mm'}}</td>
+                <td>{{ transaction.description }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.category }}</td>
+                <td>
+                    <button class="btn btn-outline-danger" (click)="deletRow(transaction)">
+                        <i class="bi bi-trash3-fill"></i> Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

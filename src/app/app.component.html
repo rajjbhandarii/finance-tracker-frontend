@@ -1,0 +1,15 @@
+<nav>
+    <div class="menu-icon" (click)="toggleMenu()">
+        <i class="bi bi-list"></i>
+    </div>
+    <ul [class.active]="menuActive">
+        <li><a routerLink="dashboard" routerLinkActive="active"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+        <li><a routerLink="add-transaction" routerLinkActive="active"><i class="bi bi-cash-stack"></i> Transaction</a>
+        </li>
+        <li><a routerLink="transaction-list" routerLinkActive="active"><i class="bi bi-list-ul"></i> Transaction
+                List</a>
+        </li>
+        <li><a routerLink="analytics" routerLinkActive="active"><i class="bi bi-bar-chart-fill"></i> Analytics</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>
