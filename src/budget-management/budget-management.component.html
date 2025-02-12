@@ -1,0 +1,29 @@
+<div class="budget-container">
+    <h2>Budget Management</h2>
+
+    <!-- Budget Input -->
+    <div class="budget-input">
+        <label for="category">Category:</label>
+        <input type="text" id="category" [(ngModel)]="newBudget.category" placeholder="E.g., Food, Rent">
+
+        <label for="amount">Budget Amount:</label>
+        <input type="number" id="amount" [(ngModel)]="newBudget.amount" placeholder="Enter amount">
+
+        <button (click)="addBudget()">Add Budget</button>
+    </div>
+
+    <!-- Budget List -->
+    <div *ngIf="budgets.length > 0" class="budget-list">
+        <h3>Your Budgets</h3>
+        <div *ngFor="let budget of budgets">
+            <div class="budget-item">
+                <span>{{ budget.category }}</span>
+                <span>{{budget.amount | currency:'INR'}}</span>
+                <button class="delete-btn" (click)="removeBudget(budget)">✖</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" [style.width]="getBudgetProgress(budget) + '%'"></div>
+            </div>
+        </div>
+    </div>
+</div>
