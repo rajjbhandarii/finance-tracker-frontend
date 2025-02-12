@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   recentTransactions: any[] = [];
   transactions: any[] = [];
 
-  private apiUrl = environment.apiUrl;
+  private apiDataUrl = environment.apiDataUrl;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     this.fetchRecentTransactions();
   }
   calculateTotalIncome() {
-    this.http.get(this.apiUrl).subscribe((response: any) => {
+    this.http.get(this.apiDataUrl).subscribe((response: any) => {
       console.log(response);
       this.totalIncome = response
         .filter((t: { category: string }) => t.category === 'Income') // "t" represent incoming transaction
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchRecentTransactions() {
-    this.http.get(this.apiUrl).subscribe((response: any) => {
+    this.http.get(this.apiDataUrl).subscribe((response: any) => {
       this.recentTransactions = response.slice(-5).reverse();
     });
   }

@@ -36,12 +36,12 @@ export class AnalyticsComponent implements OnInit {
     'Dec',];
   predictedTransactions: any[] = [];
   futurePrediction: number | undefined;
-  private apiUrl = environment.apiUrl;
+  private apiDataUrl = environment.apiDataUrl;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get(this.apiUrl).subscribe((fetchedTransactions: any) => {
+    this.http.get(this.apiDataUrl).subscribe((fetchedTransactions: any) => {
       this.transactionCategories =
         this.calculateTransactionCategories(fetchedTransactions);
       this.calculateSummary(fetchedTransactions);

@@ -15,7 +15,7 @@ export class TransactionListComponent implements OnInit {
   isloading: boolean = true;
   showDelayMessage: boolean = false;
 
-  private apiUrl = environment.apiUrl;
+  private apiDataUrl = environment.apiDataUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,7 @@ export class TransactionListComponent implements OnInit {
   }
 
   getdata() {
-    this.http.get(this.apiUrl).subscribe((response: any) => {
+    this.http.get(this.apiDataUrl).subscribe((response: any) => {
       if (this.isloading) {
         this.showDelayMessage = true;
       } else {
@@ -36,7 +36,7 @@ export class TransactionListComponent implements OnInit {
   }
 
   deletRow(response: any) {
-    this.http.delete(this.apiUrl + '/' + response.id).subscribe((response: any) => {
+    this.http.delete(this.apiDataUrl + '/' + response.id).subscribe((response: any) => {
       this.getdata();
     });
   }
