@@ -35,7 +35,7 @@ export class BudgetManagementComponent {
         alert('Budget added successfully !');
 
         // Reset form fields
-        // this.newBudget = { category: 'food', amount: 10 };
+        this.newBudget = { category: '', amount: 0 };
       });
     }
   }
@@ -46,6 +46,7 @@ export class BudgetManagementComponent {
     });
 
   }
+
   getbudget() {
     this.http.get(this.apiBudgetUrl).subscribe((response: any) => {
       this.budgets = response;
