@@ -3,13 +3,25 @@
         <i class="bi bi-list"></i>
     </div>
     <ul [class.active]="menuActive">
-        <li><a routerLink="dashboard" routerLinkActive="active"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
-        <li><a routerLink="add-transaction" routerLinkActive="active"><i class="bi bi-cash-stack"></i> Transaction</a>
+        <li><a routerLink="dashboard" routerLinkActive="active"><i class="bi bi-clipboard"></i> Dashboard</a></li>
+        <li><a routerLink="add-transaction" routerLinkActive="active"><i class="bi bi-plus-circle"></i> Transaction</a>
         </li>
         <li><a routerLink="transaction-list" routerLinkActive="active"><i class="bi bi-list-ul"></i> Transaction
                 List</a>
+
         </li>
-        <li><a routerLink="analytics" routerLinkActive="active"><i class="bi bi-bar-chart-fill"></i> Analytics</a></li>
+        <li><a routerLink="analytics" routerLinkActive="active"><i class="bi bi-bar-chart"></i> Analytics</a></li>
+        <li><a routerLink="budget" routerLinkActive="active"><i class="bi bi-patch-exclamation"></i>Budget</a></li>
+
     </ul>
 </nav>
 <router-outlet></router-outlet>
+
+<!-- The above code is the HTML code for the navigation bar. It contains a list of links that will be used to navigate to different components. 
+    The  routerLink  directive is used to navigate to different components. The  routerLinkActive  directive is used to add a class to the active link. 
+    The  toggleMenu()  method is called when the menu icon is clicked. This method toggles the  menuActive  property. 
+    The  router-outlet  directive is used to render the component based on the route. 
+    Step 4: Create the Dashboard Component 
+    ng generate component dashboard
+    
+    The above command will generate a new component named  dashboard . -->
