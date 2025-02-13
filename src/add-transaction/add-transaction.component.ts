@@ -15,9 +15,9 @@ import { CommonModule } from '@angular/common';
 export class AddTransactionComponent {
   data: any = {
     date: new Date(),
-    description: '',
-    amount: 0,
-    category: '',
+    description: 'c',
+    amount: 100,
+    category: 'Income',
   };
 
   budget: any = {
@@ -25,6 +25,7 @@ export class AddTransactionComponent {
     amount: 0,
     spent: 0,
   };
+
 
   private apiDataUrl = environment.apiDataUrl;
   private apiBudgetUrl = environment.apiBudgetUrl;
