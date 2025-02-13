@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiDataUrl: 'https://expenses-tracker-backed.onrender.com/api/data',
-    apiBudgetUrl: 'https://expenses-tracker-backed.onrender.com/api/budget'
+    apiDataUrl: 'https://finance-tracker-backend-tpfn.onrender.com/api/data',
+    apiBudgetUrl: 'https://finance-tracker-backend-tpfn.onrender.com/api/budget'
 };
