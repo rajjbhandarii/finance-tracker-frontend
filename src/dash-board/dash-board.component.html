@@ -31,7 +31,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let transaction of recentTransactions">
-                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.date| date:'dd-MM-yyyy || hh:mm aa' }}</td>
                     <td>{{ transaction.description }}</td>
                     <td>{{ transaction.amount | currency:'INR' }}</td>
                     <td>{{ transaction.category }}</td>
