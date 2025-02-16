@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, numberAttribute, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-budget-management',
@@ -11,17 +12,23 @@ import { environment } from '../environments/environment';
   templateUrl: './budget-management.component.html',
   styleUrls: ['./budget-management.component.css'],
 })
-export class BudgetManagementComponent {
+export class BudgetManagementComponent implements OnInit {
   budgets: { category: string; amount: number; spent: number }[] = [];
-  newBudget = { category: 'food', amount: 10 };
+  newBudget = { category: '', amount: 0 };
+  spent: { description: string; amount: number; }[] = [];
 
   private apiBudgetUrl = environment.apiBudgetUrl;
+  private apiDataUrl = environment.apiDataUrl;
 
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {
-    this.getbudget()
+  constructor(private http: HttpClient) {
+    this.getBudget();
+    this.getSpent();
   }
+
+  ngOnInit(): void {
+    this.getBudgetProgress(this.spent[0].description);
+    this.getBudget();
+  };
 
   addBudget() {
     if (this.newBudget.category && this.newBudget.amount > 0 && this.budgets.filter(b => b.category === this.newBudget.category).length === 0) {
@@ -31,29 +38,54 @@ export class BudgetManagementComponent {
         spent: 0
       };
       this.budgets.push(newBudgetItem);
-      this.http.post(this.apiBudgetUrl, newBudgetItem).subscribe((response: any) => {
+      this.http.post(this.apiBudgetUrl, newBudgetItem).subscribe(() => {
         alert('Budget added successfully !');
 
         // Reset form fields
-        this.newBudget = { category: '', amount: 0 };
+        // this.newBudget = { category: '', amount: 0 };
       });
+
     }
   }
 
-  removeBudget(response: any) {
-    this.http.delete(this.apiBudgetUrl + '/' + response.id).subscribe((response: any) => {
-      alert('Budget removed successfully !');
-    });
-
-  }
-
-  getbudget() {
+  getBudget() {
     this.http.get(this.apiBudgetUrl).subscribe((response: any) => {
+      console.log("budgets response", response)
       this.budgets = response;
+      console.log("constrctor budget", this.budgets);
     });
   }
 
-  getBudgetProgress(budget: any) {
-    return (budget.spent / budget.amount) * 100;
+  getSpent() {
+    this.http.get(this.apiDataUrl).subscribe((response: any) => {
+      console.log("spent response", response)
+      this.spent = response.map((item: any) => {
+        return {
+          description: item.description,
+          amount: item.amount
+        };
+      });
+      console.log("constructor spent", this.spent);
+    });
   }
+
+  removeBudget(response: any) {
+    console.log(response.id);
+    this.http.delete(this.apiBudgetUrl + '/' + response.id).subscribe(() => {
+      alert('Budget removed successfully !');
+      this.getBudget();
+    });
+  }
+
+  getBudgetProgress(category: string): number {
+    const budgetItem = this.budgets.find(b => b.category.toLocaleLowerCase() === category.toLocaleLowerCase());//compare the category(parameter) with the budget category
+    const spentItem = this.spent.find(s => s.description.toLocaleLowerCase() === category.toLocaleLowerCase());//compare the category(parameter) with the spent category
+    console.log("budgetItem", budgetItem);
+    console.log("spentItem", spentItem);
+    if (budgetItem && spentItem) {
+      return (spentItem.amount / budgetItem.amount) * 100;
+    }
+    return 0;
+  }
+
 }

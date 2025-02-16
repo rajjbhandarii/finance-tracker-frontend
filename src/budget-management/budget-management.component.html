@@ -18,12 +18,13 @@
         <div *ngFor="let budget of budgets">
             <div class="budget-item">
                 <span>{{ budget.category }}</span>
-                <span>{{budget.amount | currency:'INR'}}</span>
+                <span>{{ budget.amount | currency:'INR' }}</span>
                 <button class="delete-btn" (click)="removeBudget(budget)">✖</button>
             </div>
             <div class="progress-bar">
-                <div class="progress" [style.width]="getBudgetProgress(budget) + '%'"></div>
+                <div class="progress" [style.width]="getBudgetProgress(budget.category) + '%'"></div>
             </div>
         </div>
     </div>
+
 </div>
