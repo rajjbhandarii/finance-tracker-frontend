@@ -15,9 +15,9 @@ import { CommonModule } from '@angular/common';
 export class AddTransactionComponent {
   data: any = {
     date: new Date(),
-    description: 'c',
-    amount: 100,
-    category: 'Income',
+    description: '',
+    amount: 0,
+    category: '',
   };
 
   budget: any = {
@@ -42,7 +42,7 @@ export class AddTransactionComponent {
         }
       }
       console.log('Budget:', this.budget);
-      if (this.data.description.toLowerCase().trim() === this.budget.category.toLowerCase().trim() &&
+      if (this.data.description.toLowerCase().trim() === this.budget.category.toLowerCase().trim() && this.data.category === 'Expenses' &&
         this.data.amount > this.budget.amount) {
         alert('Transaction amount is greater than budget amount!');
       } else {
