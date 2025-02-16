@@ -3,7 +3,6 @@ import { Component, numberAttribute, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-budget-management',
@@ -15,7 +14,7 @@ import { of } from 'rxjs';
 export class BudgetManagementComponent implements OnInit {
   budgets: { category: string; amount: number; spent: number }[] = [];
   newBudget = { category: '', amount: 0 };
-  spent: { description: string; amount: number; }[] = [];
+  spent: { description: string; amount: number; category: string; }[] = [];
 
   private apiBudgetUrl = environment.apiBudgetUrl;
   private apiDataUrl = environment.apiDataUrl;
@@ -62,7 +61,8 @@ export class BudgetManagementComponent implements OnInit {
       this.spent = response.map((item: any) => {
         return {
           description: item.description,
-          amount: item.amount
+          amount: item.amount,
+          category: item.category
         };
       });
       console.log("constructor spent", this.spent);
@@ -79,7 +79,7 @@ export class BudgetManagementComponent implements OnInit {
 
   getBudgetProgress(category: string): number {
     const budgetItem = this.budgets.find(b => b.category.toLocaleLowerCase() === category.toLocaleLowerCase());//compare the category(parameter) with the budget category
-    const spentItem = this.spent.find(s => s.description.toLocaleLowerCase() === category.toLocaleLowerCase());//compare the category(parameter) with the spent category
+    const spentItem = this.spent.find(s => s.description.toLocaleLowerCase() === category.toLocaleLowerCase() && s.category === 'Expenses');//compare the category(parameter) with the spent category
     console.log("budgetItem", budgetItem);
     console.log("spentItem", spentItem);
     if (budgetItem && spentItem) {
