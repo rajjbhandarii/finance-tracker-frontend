@@ -3,14 +3,10 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  menuActive: boolean = false;
 
-  toggleMenu() {
-    this.menuActive = !this.menuActive;
-  }
 }
