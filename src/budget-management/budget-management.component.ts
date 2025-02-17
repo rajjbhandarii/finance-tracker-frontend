@@ -78,12 +78,11 @@ export class BudgetManagementComponent implements OnInit {
   }
 
   getBudgetProgress(category: string): number {
-    const budgetItem = this.budgets.find(b => b.category.toLocaleLowerCase() === category.toLocaleLowerCase());//compare the category(parameter) with the budget category
-    const spentItem = this.spent.find(s => s.description.toLocaleLowerCase() === category.toLocaleLowerCase() && s.category === 'Expenses');//compare the category(parameter) with the spent category
-    console.log("budgetItem", budgetItem);
-    console.log("spentItem", spentItem);
-    if (budgetItem && spentItem) {
-      return (spentItem.amount / budgetItem.amount) * 100;
+    const budgetItem = this.budgets.find(b => b.category.toLocaleLowerCase() === category.toLocaleLowerCase());
+    const spentItems = this.spent.filter(s => s.description.toLocaleLowerCase() === category.toLocaleLowerCase() && s.category === 'Expenses');
+    if (budgetItem && spentItems.length > 0) {
+      const totalSpent = spentItems.reduce((acc, item) => acc + item.amount, 0);
+      return (totalSpent / budgetItem.amount) * 100;
     }
     return 0;
   }
