@@ -38,11 +38,11 @@
 .analytics .breakdown,
 .analytics .trends {
   margin-top: 30px;
+  /* border: 1px solid #ccc; */
 }
 
 .analytics canvas {
-  max-width: 100%;
-  margin: 0 auto;
+  max-width: 200%;
   max-height: 400px;
   display: block;
 }

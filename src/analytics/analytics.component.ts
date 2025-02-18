@@ -36,6 +36,7 @@ export class AnalyticsComponent implements OnInit {
     'Dec',];
   predictedTransactions: any[] = [];
   futurePrediction: number | undefined;
+
   private apiDataUrl = environment.apiDataUrl;
 
   constructor(private http: HttpClient) { }
@@ -132,7 +133,7 @@ export class AnalyticsComponent implements OnInit {
             {
               label: 'Amount',
               data: [this.totalIncome, this.totalExpenses],
-              backgroundColor: ['#4caf50', '#f44336'],
+              backgroundColor: ['#42a5f5', '#f44336'],
             },
           ],
         },
@@ -153,34 +154,50 @@ export class AnalyticsComponent implements OnInit {
     const monthlyTrendsCtx = document.getElementById(
       'monthlyTrendsChart'
     ) as HTMLCanvasElement;
+
     if (monthlyTrendsCtx) {
       new Chart(monthlyTrendsCtx, {
-        type: 'line',
+        type: 'line', // Area charts are essentially line charts with fill enabled
         data: {
-          labels: [this.wordMonth[this.month[0] - 1], this.wordMonth[this.month[1] - 1], this.wordMonth[this.month[2] - 1], this.wordMonth[this.month[3] - 1], this.wordMonth[this.month[4] - 1], this.wordMonth[this.month[5] - 1], this.wordMonth[this.month[6] - 1], this.wordMonth[this.month[7] - 1], this.wordMonth[this.month[8] - 1], this.wordMonth[this.month[9] - 1], this.wordMonth[this.month[10] - 1], this.wordMonth[this.month[11] - 1]],
+          labels: this.month.map(m => this.wordMonth[m - 1]),
           datasets: [
             {
               label: 'Income Trends',
               data: this.monthlyIncome,
               borderColor: '#42a5f5',
-              fill: false,
+              backgroundColor: 'rgba(66, 165, 245, 0.2)',
+              fill: 'start', // Enables the area fill
+              tension: 0.4, // Smooth curves
             },
             {
               label: 'Expense Trends',
               data: this.monthlyExpenses,
               borderColor: '#f44336',
-              fill: false,
+              backgroundColor: 'rgba(244, 67, 54, 0.2)',
+              fill: 'start', // Enables the area fill
+              tension: 0.4, // Smooth curves
             },
           ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          scales: {
+            x: {
+              grid: {
+                display: false, // Optional: Hide gridlines for better visibility
+              },
+            },
+            y: {
+              beginAtZero: true,
+            },
+          },
         },
       });
     } else {
       console.error('Monthly Trends chart element not found');
     }
+
   }
 
   async trainModel() {
