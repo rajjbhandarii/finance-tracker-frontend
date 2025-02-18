@@ -6,6 +6,14 @@
   background: #11284c;
   padding: 15px 20px;
   color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.content {
+  padding-top: 60px;
 }
 
 .top-navbar .logo {
