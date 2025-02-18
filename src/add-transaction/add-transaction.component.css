@@ -1,7 +1,11 @@
 .transaction-form {
   margin: 20px;
 }
-
+h2 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: bold;
+}
 .transaction-form h2 {
   text-align: center;
 }

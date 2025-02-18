@@ -1,4 +1,9 @@
 .budget-container {
+  h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+  }
   width: 100%;
   max-width: 500px;
   margin: auto;
@@ -50,7 +55,7 @@ button:hover {
 }
 
 .delete-btn {
-  background: red;
+  background: rgba(255, 3, 3, 0.886);
   border: none;
   color: white;
   cursor: pointer;

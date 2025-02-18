@@ -19,6 +19,8 @@
 .top-navbar .logo {
   font-size: 20px;
   font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .nav-links {

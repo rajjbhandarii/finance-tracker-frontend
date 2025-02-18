@@ -157,39 +157,52 @@ export class AnalyticsComponent implements OnInit {
 
     if (monthlyTrendsCtx) {
       new Chart(monthlyTrendsCtx, {
-        type: 'line', // Area charts are essentially line charts with fill enabled
+        type: 'line', // Line chart with filled area
         data: {
           labels: this.month.map(m => this.wordMonth[m - 1]),
           datasets: [
             {
               label: 'Income Trends',
               data: this.monthlyIncome,
-              borderColor: '#42a5f5',
-              backgroundColor: 'rgba(66, 165, 245, 0.2)',
-              fill: 'start', // Enables the area fill
+              borderColor: '#007bff', // Blue color for the line
+              backgroundColor: 'rgba(0, 123, 255, 0.3)', // Transparent fill color
+              fill: true, // Enables the area fill
               tension: 0.4, // Smooth curves
+              pointRadius: 5, // Size of data points
+              pointBackgroundColor: '#007bff', // Point color
             },
             {
               label: 'Expense Trends',
               data: this.monthlyExpenses,
-              borderColor: '#f44336',
-              backgroundColor: 'rgba(244, 67, 54, 0.2)',
-              fill: 'start', // Enables the area fill
+              borderColor: '#dc3545', // Red color for expense
+              backgroundColor: 'rgba(220, 53, 69, 0.3)', // Transparent fill
+              fill: true, // Enables the area fill
               tension: 0.4, // Smooth curves
+              pointRadius: 5, // Size of data points
+              pointBackgroundColor: '#dc3545', // Point color
             },
           ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true, // Show legend
+              position: 'top',
+            },
+          },
           scales: {
             x: {
               grid: {
-                display: false, // Optional: Hide gridlines for better visibility
+                display: false, // Hide vertical grid lines
               },
             },
             y: {
               beginAtZero: true,
+              grid: {
+                color: 'rgba(0, 0, 0, 0.1)', // Light grid lines
+              },
             },
           },
         },

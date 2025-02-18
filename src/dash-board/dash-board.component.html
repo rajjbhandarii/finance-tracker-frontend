@@ -1,17 +1,23 @@
 <div class="dashboard">
     <h2>Dashboard</h2>
     <div class="summary">
-        <div class="card">
-            <h3>Total Income</h3>
-            <p>{{ totalIncome | currency:'INR' }}</p>
+        <div class="card blue">
+            <i class="fas fa-wallet card-icon"></i>
+            <h3>Income</h3>
+            <p class="card-value">{{totalIncome|currency:'INR'}}</p>
+            <p class="card-subtext">All Your Income From Every Source </p>
         </div>
-        <div class="card">
-            <h3>Total Expenses</h3>
-            <p>{{ totalExpenses | currency:'INR' }}</p>
-        </div>
-        <div class="card">
+        <div class="card green">
+            <i class="fas fa-balance-scale card-icon"></i>
             <h3>Balance</h3>
-            <p>{{ balance | currency:'INR' }}</p>
+            <p class="card-value">{{balance|currency:'INR'}}</p>
+            <p class="card-subtext">Your Remaining Balance</p>
+        </div>
+        <div class="card orange">
+            <i class="fas fa-shopping-cart card-icon"></i>
+            <h3>Expenses</h3>
+            <p class="card-value">{{totalExpenses|currency:'INR'}}</p>
+            <p class="card-subtext">All Your Expenses From Every Source</p>
         </div>
     </div>
     <div class="quick-links">

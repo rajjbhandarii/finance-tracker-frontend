@@ -2,22 +2,28 @@
     <h2>Analytics</h2>
 
     <div class="summary">
-        <div class="card">
-            <h3>Total Income</h3>
-            <p>{{ totalIncome | currency:'INR' }}</p>
+        <div class="card blue">
+            <i class="fas fa-wallet card-icon"></i>
+            <h3>Income</h3>
+            <p class="card-value">{{totalIncome|currency:'INR'}}</p>
+            <p class="card-subtext">All Your Income From Every Source </p>
         </div>
-        <div class="card">
-            <h3>Total Expenses</h3>
-            <p>{{ totalExpenses | currency:'INR' }}</p>
-        </div>
-        <div class="card">
+        <div class="card green">
+            <i class="fas fa-balance-scale card-icon"></i>
             <h3>Balance</h3>
-            <p>{{ balance | currency:'INR' }}</p>
+            <p class="card-value">{{balance|currency:'INR'}}</p>
+            <p class="card-subtext">Your Remaining Balance</p>
         </div>
-    </div>
-
-    <div>
-        <h3>AI-Driven Prediction</h3>
+        <div class="card orange">
+            <i class="fas fa-shopping-cart card-icon"></i>
+            <h3>Expenses</h3>
+            <p class="card-value">{{totalExpenses|currency:'INR'}}</p>
+            <p class="card-subtext">All Your Expenses From Every Source</p>
+        </div>
+    </div> <!-- Closing .summary here to prevent misalignment -->
+    <br>
+    <div class="ai-prediction">
+        <h3><i class="fas fa-robot"></i> AI-Driven Prediction </h3>
         <p *ngIf="futurePrediction">
             Predicted Expense for Next Month: {{ futurePrediction | currency }}
         </p>
@@ -25,12 +31,14 @@
     </div>
 
     <div class="charts">
-        <h3>Income vs Expenses</h3>
+        <h3>Income vs Expenses </h3>
+        <i class="fas fa-exchange-alt"></i>
         <canvas id="incomeExpenseChart"></canvas>
     </div>
 
+
     <div class="breakdown">
-        <h3>Transaction Breakdown</h3>
+        <h3><i class="fas fa-list-alt"></i> Transaction Breakdown </h3>
         <ul>
             <li *ngFor="let category of transactionCategories">
                 {{ category.name }}: {{ category.total | currency:'INR' }}
@@ -39,7 +47,7 @@
     </div>
 
     <div class="trends">
-        <h3>Monthly Trends</h3>
+        <h3><i class="fas fa-chart-line"></i> Monthly Trends</h3>
         <canvas id="monthlyTrendsChart"></canvas>
     </div>
 </div>

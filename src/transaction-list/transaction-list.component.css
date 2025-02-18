@@ -1,5 +1,11 @@
 .transaction-list {
   margin: 20px;
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+  }
 }
 
 .transaction-list h2 {
