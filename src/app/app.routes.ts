@@ -6,10 +6,12 @@ import { AddTransactionComponent } from '../add-transaction/add-transaction.comp
 import { TransactionListComponent } from '../transaction-list/transaction-list.component';
 import { BudgetManagementComponent } from '../budget-management/budget-management.component';
 import { AnalyticsComponent } from '../analytics/analytics.component';
+import { SigninComponent } from '../signin/signin.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Default route
   { path: 'login', component: LoginComponent },
+  { path: 'signin', component: SigninComponent },
   {
     path: '', component: LayoutComponent, children: [
       { path: 'dashboard', component: DashboardComponent },
@@ -18,6 +20,9 @@ export const routes: Routes = [
       { path: 'budget', component: BudgetManagementComponent },
       { path: 'analytics', component: AnalyticsComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'signin', component: SigninComponent },
+      { path: '', redirectTo: 'layout', pathMatch: 'full' },
     ]
-  },
+  }
+
 ];
