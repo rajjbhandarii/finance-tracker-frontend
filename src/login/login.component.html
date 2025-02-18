@@ -8,6 +8,8 @@
             <label for="password">Password:</label>
             <input id="password" formControlName="password" type="password" />
         </div>
-        <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        <button type="submit" [disabled]="!loginForm.valid">Login</button><br>
+        create a new account
+        <button (click)="signin()">sign in?</button>
     </form>
 </div>

@@ -30,6 +30,10 @@ export class LoginComponent {
       } else {
         alert('Invalid credentials');
       }
+
     }
+  }
+  signin() {
+    this.router.navigateByUrl('signin');
   }
 }
