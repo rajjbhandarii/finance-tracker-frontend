@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,9 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  private apiUserData = environment.apiUserData;
+
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -22,16 +26,15 @@ export class LoginComponent {
   router = inject(Router)
 
   onLogin() {
-    if (this.loginForm.valid) {
+    this.http.get(this.apiUserData).subscribe((response: any) => {
       const { username, password } = this.loginForm.value;
-      if (username === 'a' && password === 'a') {
-        // alert('Login successful');
+      const user = response.find((user: any) => user.username === username && user.password === password);
+      if (user) {
         this.router.navigateByUrl('dashboard');
       } else {
-        alert('Invalid credentials');
+        alert('Invalid username or password');
       }
-
-    }
+    });
   }
   signin() {
     this.router.navigateByUrl('signin');
