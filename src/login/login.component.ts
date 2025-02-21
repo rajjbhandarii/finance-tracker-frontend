@@ -26,23 +26,33 @@ export class LoginComponent {
   router = inject(Router)
 
   onLogin() {
-    if(username==="r"&&password==="r"){
+    const { username, password } = this.loginForm.value;
+
+    // Check hardcoded credentials first
+    if (username === "r" && password === "r") {
       this.router.navigateByUrl('dashboard');
+      return;
     }
-    this.http.get(this.apiUserData).subscribe((response: any) => {
-      const { username, password } = this.loginForm.value;
-      if(username==="r"&&password==="r"){
-      this.router.navigateByUrl('dashboard');
+
+    // Validate against API data
+    this.http.get<any[]>(this.apiUserData).subscribe(
+      (users) => {
+        const user = users.find(u => u.username === username && u.password === password);
+        if (user) {
+          this.router.navigateByUrl('dashboard');
+        } else {
+          alert('Invalid username or password');
+        }
+      },
+      (error) => {
+        console.error('Error fetching user data', error);
+        alert('Login failed. Please try again later.');
       }
-      const user = response.find((user: any) => user.username === username && user.password === password);
-      if (user) {
-        this.router.navigateByUrl('dashboard');
-      } else {
-        alert('Invalid username or password');
-      }
-    });
+    );
   }
+
   signin() {
     this.router.navigateByUrl('signin');
   }
 }
+
