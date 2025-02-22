@@ -1,15 +1,18 @@
 <div class="login-container">
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-        <div>
-            <label for="username">Username:</label>
-            <input id="username" formControlName="username" type="text" />
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form">
+        <h2>Login</h2>
+        <div class="input-group">
+            <input id="username" formControlName="username" type="text" required />
+            <label for="username">Username</label>
         </div>
-        <div>
-            <label for="password">Password:</label>
-            <input id="password" formControlName="password" type="password" />
+        <div class="input-group">
+            <input id="password" formControlName="password" type="password" required />
+            <label for="password">Password</label>
         </div>
-        <button type="submit" [disabled]="!loginForm.valid">Login</button><br>
-        create a new account
-        <button (click)="signin()">sign in?</button>
+        <button type="submit" [disabled]="!loginForm.valid" class="submit-btn">Login</button>
+        <div class="signup-link">
+            <span>Create a new account</span>
+            <button type="button" (click)="signin()" class="signin-btn">Sign in?</button>
+        </div>
     </form>
 </div>
