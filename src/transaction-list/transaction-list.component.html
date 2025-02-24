@@ -1,10 +1,24 @@
 <div class="transaction-list">
-    <h2>Transaction List</h2>
-    @if(isloading==true){
-    <div class="alert alert-info" role="alert">
-        Transactions loading... (May take upto 10 second)
+    <div class="header">
+        <h2>Transaction List</h2>
     </div>
-    }
+
+    @if(isloading==true){
+    <div class="pyramid-loader">
+        <div class="wrapper">
+            <span class="side side1"></span>
+            <span class="side side2"></span>
+            <span class="side side3"></span>
+            <span class="side side4"></span>
+            <span class="shadow"></span>
+        </div>
+    </div>
+
+    <div class="loader">
+        <div data-glitch="Loading..." class="glitch">Loading...</div>
+    </div>
+
+    }@else {
     <table>
         <thead>
             <tr>
@@ -29,4 +43,5 @@
             </tr>
         </tbody>
     </table>
+    }
 </div>
